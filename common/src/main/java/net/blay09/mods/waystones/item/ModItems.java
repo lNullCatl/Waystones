@@ -33,7 +33,7 @@ public class ModItems {
         boundScroll = items.register("bound_scroll", BoundScrollItem::new).asDeferredItem();
         warpScroll = items.register("warp_scroll", WarpScrollItem::new).asDeferredItem();
         final var warpStoneTypes = WarpStoneTypes.builtinValues().collect(Collectors.toCollection(HashSet::new));
-        warpStones = items.registerDiscriminated(warpStoneTypes, type -> DiscriminatedItems.prefix(type != WarpStoneTypes.UNSCOPED ? type : null, "warp_stone"), WarpStoneItem::new, it -> it).asDiscriminatedItems();
+        warpStones = items.registerDiscriminated(warpStoneTypes, type -> type != WarpStoneTypes.UNSCOPED ? type + "_warp_stone" : "warp_stone", WarpStoneItem::new, it -> it).asDiscriminatedItems();
         dormantShard = items.register("dormant_shard", ShardItem::new).asDeferredItem();
         attunedShard = items.register("attuned_shard", AttunedShardItem::new).asDeferredItem();
         crumblingAttunedShard = items.register("crumbling_attuned_shard", CrumblingAttunedShardItem::new).asDeferredItem();
